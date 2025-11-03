@@ -45,7 +45,7 @@ const Contact = () => {
                   <Mail className="h-6 w-6 text-primary mt-1" />
                   <div>
                     <h3 className="font-semibold text-lg mb-2">Email</h3>
-                    <p className="text-muted-foreground">support@stoorey.com</p>
+                    <p className="text-muted-foreground">stooreyofficial@gmail.com</p>
                   </div>
                 </div>
               </div>
@@ -55,8 +55,9 @@ const Contact = () => {
                   <Phone className="h-6 w-6 text-primary mt-1" />
                   <div>
                     <h3 className="font-semibold text-lg mb-2">Phone</h3>
-                    <p className="text-muted-foreground">+91 92147 45754</p>
-                    <p className="text-sm text-muted-foreground mt-1">Mon-Fri, 9AM-6PM IST</p>
+                    <p className="text-primary-foreground/80">+91 9214745754</p>
+                <p className="text-primary-foreground/80">+91 7877360540</p>
+                    {/* <p className="text-sm text-muted-foreground mt-1">Mon-Fri, 9AM-6PM IST</p> */}
                   </div>
                 </div>
               </div>
@@ -66,7 +67,15 @@ const Contact = () => {
                   <MapPin className="h-6 w-6 text-primary mt-1" />
                   <div>
                     <h3 className="font-semibold text-lg mb-2">Location</h3>
-                    <p className="text-muted-foreground">India</p>
+                    <p className="text-muted-foreground">1/427, Ambedkarpuram, Awas Vikas - 3, SIS Hospital Road, Kalyanpur, Kanpur, Uttar Pradesh - 208017</p>
+                    <a
+                      href="https://maps.app.goo.gl/nqGzk4GoeWx52xYY7"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block mt-2 text-primary underline hover:text-primary/80"
+                    >
+                      Get Directions on Google Maps
+                    </a>
                   </div>
                 </div>
               </div>
@@ -82,7 +91,7 @@ const Contact = () => {
                 
                 <div className="space-y-4">
                   <a 
-                    href="https://facebook.com/stoorey" 
+                    href="https://www.facebook.com/profile.php?id=61577093844769" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-center space-x-3 p-3 bg-background rounded-lg hover:shadow-md transition-shadow"
@@ -92,23 +101,13 @@ const Contact = () => {
                   </a>
                   
                   <a 
-                    href="https://instagram.com/stoorey" 
+                    href="https://instagram.com/stooreyofficial" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="flex items-center space-x-3 p-3 bg-background rounded-lg hover:shadow-md transition-shadow"
                   >
                     <Instagram className="h-6 w-6 text-[#E4405F]" />
                     <span className="font-medium">Instagram</span>
-                  </a>
-                  
-                  <a 
-                    href="https://twitter.com/stoorey" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-3 p-3 bg-background rounded-lg hover:shadow-md transition-shadow"
-                  >
-                    <Twitter className="h-6 w-6 text-[#1DA1F2]" />
-                    <span className="font-medium">Twitter</span>
                   </a>
                 </div>
               </div>
@@ -136,15 +135,15 @@ const Contact = () => {
             <div className="grid md:grid-cols-3 gap-4 text-muted-foreground">
               <div>
                 <p className="font-medium text-foreground">Monday - Friday</p>
-                <p>9:00 AM - 6:00 PM</p>
+                <p>10:00 AM - 10:00 PM</p>
               </div>
               <div>
                 <p className="font-medium text-foreground">Saturday</p>
-                <p>10:00 AM - 4:00 PM</p>
+                <p>10:00 AM - 10:00 PM</p>
               </div>
               <div>
                 <p className="font-medium text-foreground">Sunday</p>
-                <p>Closed</p>
+                <p>10:00 AM - 10:00 PM</p>
               </div>
             </div>
           </div>

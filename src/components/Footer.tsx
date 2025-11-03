@@ -1,115 +1,110 @@
-import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin } from "lucide-react";
+import { Facebook, Instagram, Mail, Phone, MapPin, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const handleWhatsApp = () => {
+    const message = "Hi! I'd like to know more about your products.";
+    const whatsappNumber = "919214745754";
+    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`, '_blank');
+  };
+
   return (
     <footer className="bg-primary text-primary-foreground py-16">
       <div className="container mx-auto px-4">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {/* Company Info */}
-          <div>
-            <h3 className="text-2xl font-bold mb-4">Stoorey</h3>
-            <p className="text-primary-foreground/80 mb-6 leading-relaxed">
-              Your go-to neighborhood store for stationery, gifts, toys, and creative finds. A one-stop shop where everyday essentials meet delightful surprises—for students, gifters, and the curious alike!
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {/* WhatsApp Quick Chat */}
+          <div className="space-y-6">
+            <h3 className="text-lg font-semibold mb-4">Need Quick Help?</h3>
+            <p className="text-primary-foreground/80 mb-6">
+              Message us on WhatsApp for instant support and product inquiries.
             </p>
-            <div className="flex space-x-4">
-              <a href="https://facebook.com/stoorey" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a href="https://instagram.com/stoorey" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a href="https://youtube.com/@stoorey" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                <Youtube className="h-5 w-5" />
-              </a>
-            </div>
+            <button
+              onClick={handleWhatsApp}
+              className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20BA59] text-primary font-semibold py-3 px-4 rounded-lg transition-colors"
+              style={{ color: '#fff' }}
+            >
+              <MessageCircle className="h-5 w-5" />
+              Chat on WhatsApp
+            </button>
           </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <div className="space-y-3">
-              <Link to="/products" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                All Products
-              </Link>
-              <Link to="/categories" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                Categories
-              </Link>
-              <Link to="/deals" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                Special Deals
-              </Link>
-              <Link to="/about" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                About Us
-              </Link>
-            </div>
-          </div>
-
-          {/* Customer Service */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Customer Service</h4>
-            <div className="space-y-3">
-              <Link to="/contact" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                Contact Us
-              </Link>
-              <Link to="/shipping" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                Shipping Info
-              </Link>
-              <Link to="/returns" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                Returns & Exchanges
-              </Link>
-              <Link to="/faq" className="block text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                FAQ
-              </Link>
-            </div>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <Mail className="h-4 w-4 text-primary-foreground/80" />
-                <span className="text-primary-foreground/80">stooreyofficial@gmail.com</span>
+          {/* Contact Methods (like Contact page) */}
+          <div className="space-y-6">
+            <div className="flex items-start space-x-4">
+              <Mail className="h-6 w-6 text-primary-foreground mt-1" />
+              <div>
+                <h3 className="font-semibold text-lg mb-2">Email</h3>
+                <p className="text-primary-foreground/80">stooreyofficial@gmail.com</p>
               </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="h-4 w-4 text-primary-foreground/80" />
-                <span className="text-primary-foreground/80">+91 9214745754</span>
+            </div>
+            <div className="flex items-start space-x-4">
+              <Phone className="h-6 w-6 text-primary-foreground mt-1" />
+              <div>
+                <h3 className="font-semibold text-lg mb-2">Phone</h3>
+                <p className="text-primary-foreground/80">+91 9214745754</p>
+                <p className="text-primary-foreground/80">+91 7877360540</p>
+                {/* <p className="text-sm text-primary-foreground/80 mt-1">Mon-Sun, 9AM-6PM IST</p> */}
               </div>
-              <div className="flex items-center space-x-3">
-                <MapPin className="h-4 w-4 text-primary-foreground/80" />
-                <span className="text-primary-foreground/80">Ambedkarpuram, Awas Vikas No. 3, Kalyanpur, Kanpur</span>
+            </div>
+            <div className="flex items-start space-x-4">
+              <MapPin className="h-6 w-6 text-primary-foreground mt-1" />
+              <div>
+                <h3 className="font-semibold text-lg mb-2">Location</h3>
+                <p className="text-primary-foreground/80">1/427, Ambedkarpuram, Awas Vikas - 3, SIS Hospital Road, Kalyanpur, Kanpur, Uttar Pradesh - 208017</p>
+                <a
+                  href="https://maps.app.goo.gl/nqGzk4GoeWx52xYY7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-2 text-primary-foreground underline hover:text-primary-foreground/80"
+                >
+                  Get Directions on Google Maps
+                </a>
               </div>
             </div>
           </div>
+
+          {/* Social Media */}
+          <div className="space-y-6">
+            <h3 className="text-lg font-semibold mb-4">Connect With Us</h3>
+            <div className="space-y-4">
+              <a 
+                href="https://www.facebook.com/profile.php?id=61577093844769" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center space-x-3 p-3 bg-primary/20 rounded-lg hover:shadow-md transition-shadow"
+              >
+                <Facebook className="h-6 w-6 text-[#1877F2]" />
+                <span className="font-medium">Facebook</span>
+              </a>
+              <a 
+                href="https://instagram.com/stooreyofficial" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center space-x-3 p-3 bg-primary/20 rounded-lg hover:shadow-md transition-shadow"
+              >
+                <Instagram className="h-6 w-6 text-[#E4405F]" />
+                <span className="font-medium">Instagram</span>
+              </a>
+              {/* <a 
+                href="https://youtube.com/@stoorey" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center space-x-3 p-3 bg-primary/20 rounded-lg hover:shadow-md transition-shadow"
+              >
+                <Youtube className="h-6 w-6 text-[#FF0000]" />
+                <span className="font-medium">YouTube</span>
+              </a> */}
+            </div>
+          </div>
+
         </div>
 
-        {/* Newsletter Signup */}
-        {/* <div className="border-t border-primary-foreground/20 pt-12 mb-8">
-          <div className="max-w-2xl mx-auto text-center">
-            <h4 className="text-xl font-semibold mb-4">Stay Updated</h4>
-            <p className="text-primary-foreground/80 mb-6">
-              Subscribe to our newsletter for the latest products, deals, and exclusive offers.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary-foreground/30"
-              />
-              <button className="px-6 py-3 bg-secondary text-secondary-foreground font-semibold rounded-lg hover:bg-secondary/90 transition-colors">
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div> */}
-
         {/* Bottom Bar */}
-        <div className="border-t border-primary-foreground/20 pt-8">
+        <div className="border-t border-primary-foreground/20 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-primary-foreground/80 text-sm">
               © 2025 Stoorey. All rights reserved.
             </p>
+            {/*
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link to="/privacy" className="text-primary-foreground/80 hover:text-primary-foreground text-sm transition-colors">
                 Privacy Policy
@@ -121,6 +116,7 @@ const Footer = () => {
                 Cookie Policy
               </Link>
             </div>
+            */}
           </div>
         </div>
       </div>

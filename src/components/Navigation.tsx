@@ -24,7 +24,7 @@ const Navigation = () => {
             <Link to="/" className="text-foreground hover:text-primary transition-colors">
               Home
             </Link>
-            <Link to="/products" className="text-foreground hover:text-primary transition-colors">
+            {/* <Link to="/products" className="text-foreground hover:text-primary transition-colors">
               Products
             </Link>
             <Link to="/categories" className="text-foreground hover:text-primary transition-colors">
@@ -32,7 +32,7 @@ const Navigation = () => {
             </Link>
             <Link to="/about" className="text-foreground hover:text-primary transition-colors">
               About
-            </Link>
+            </Link> */}
             <Link to="/contact" className="text-foreground hover:text-primary transition-colors">
               Contact
             </Link>
@@ -40,20 +40,23 @@ const Navigation = () => {
 
           {/* Actions */}
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="icon" className="hidden md:flex">
+            {/* <Button variant="ghost" size="icon" className="hidden md:flex">
               <Search className="h-5 w-5" />
-            </Button>
+            </Button> */}
 
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              className="hidden md:flex"
+            <Button
+              variant="ghost"
+              size="icon"
+              className="hidden md:flex bg-[#25D366] hover:bg-[#20BA59] text-white shadow-md border border-[#25D366]"
+              style={{ borderRadius: '50%' }}
               onClick={() => window.open('https://wa.me/919214745754?text=Hi! I\'d like to know more about your products.', '_blank')}
+              aria-label="Chat on WhatsApp"
             >
-              <MessageCircle className="h-5 w-5" />
+              
+              <MessageCircle className="h-7 w-7 text-white" />
             </Button>
             
-            <Link to="/cart">
+            {/* <Link to="/cart">
               <Button variant="ghost" size="icon" className="relative">
                 <ShoppingCart className="h-5 w-5" />
                 {getItemCount() > 0 && (
@@ -62,7 +65,7 @@ const Navigation = () => {
                   </span>
                 )}
               </Button>
-            </Link>
+            </Link> */}
 
             {/* Mobile menu button */}
             <Button
