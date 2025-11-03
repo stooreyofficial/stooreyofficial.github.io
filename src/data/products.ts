@@ -118,7 +118,7 @@ export const products: Product[] = [
     rating: 4.8,
     reviews: 156,
     category: "stationery",
-    isNew: true,
+    isNew: false,
     description: "Premium pens with smooth writing experience"
   },
   {
