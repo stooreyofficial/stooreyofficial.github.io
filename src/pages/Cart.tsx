@@ -9,7 +9,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Minus, Plus, Trash2, ShoppingBag } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
-import { supabase } from '@/integrations/supabase/client';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Cart = () => {
   const { items, customerInfo, removeFromCart, updateQuantity, setCustomerInfo, getTotalPrice, clearCart } = useCart();
@@ -39,7 +39,7 @@ const Cart = () => {
     });
   };
 
-  const handleWhatsAppCheckout = async () => {
+  const handleWhatsAppCheckout = () => {
     if (!customerInfo) {
       setShowCustomerForm(true);
       toast({
@@ -53,37 +53,26 @@ const Cart = () => {
     setIsCheckingOut(true);
 
     try {
-      // Notify store owner via WhatsApp API
-      const { error } = await supabase.functions.invoke('notify-whatsapp', {
-        body: {
-          customerInfo,
-          cartItems: items,
-          totalPrice: getTotalPrice()
-        }
-      });
-
-      if (error) throw error;
-
-      // Create WhatsApp message for customer
+      // Create WhatsApp message
       const itemsText = items.map(item => 
         `${item.productName} x${item.quantity} - $${(item.productPrice * item.quantity).toFixed(2)}`
-      ).join('\n');
+      ).join('%0A');
 
-      const whatsappMessage = `Hi! I'm interested in purchasing these items:\n\n${itemsText}\n\nTotal: $${getTotalPrice().toFixed(2)}\n\nCustomer: ${customerInfo.name}\nPhone: ${customerInfo.phone}`;
+      const whatsappMessage = `Hi! I'm interested in purchasing these items:%0A%0A${itemsText}%0A%0ATotal: $${getTotalPrice().toFixed(2)}%0A%0ACustomer: ${customerInfo.name}%0APhone: ${customerInfo.phone}`;
       
-      // Replace with your actual WhatsApp Business number
-      const whatsappNumber = "+919214745754"; // Replace with your WhatsApp Business number
-      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+      // Your WhatsApp Business number
+      const whatsappNumber = "919214745754";
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
       
-      // Clear cart after successful checkout
-      await clearCart();
+      // Clear cart after preparing checkout
+      clearCart();
       
       // Redirect to WhatsApp
       window.open(whatsappUrl, '_blank');
       
       toast({
         title: "Redirecting to WhatsApp",
-        description: "Your order details have been prepared for WhatsApp"
+        description: "Your order details have been prepared"
       });
 
     } catch (error) {
@@ -113,6 +102,7 @@ const Cart = () => {
           </div>
         </div>
         <Footer />
+        <WhatsAppButton />
       </div>
     );
   }
@@ -262,6 +252,7 @@ const Cart = () => {
         </div>
       </div>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };

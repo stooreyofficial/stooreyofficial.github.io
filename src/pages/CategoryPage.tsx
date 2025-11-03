@@ -3,71 +3,17 @@ import { useParams } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
-
-// Mock products data - in a real app, this would come from an API
-const allProducts = [
-  {
-    id: 1,
-    name: "Premium Fountain Pen",
-    price: 89.99,
-    image: "/placeholder.svg",
-    rating: 4.8,
-    reviews: 125,
-    category: "stationery"
-  },
-  {
-    id: 2,
-    name: "Leather Notebook Set",
-    price: 45.99,
-    image: "/placeholder.svg",
-    rating: 4.6,
-    reviews: 89,
-    category: "stationery"
-  },
-  {
-    id: 3,
-    name: "Luxury Gift Box",
-    price: 125.99,
-    image: "/placeholder.svg",
-    rating: 4.9,
-    reviews: 203,
-    category: "gifts"
-  },
-  {
-    id: 4,
-    name: "Educational Building Blocks",
-    price: 34.99,
-    image: "/placeholder.svg",
-    rating: 4.7,
-    reviews: 156,
-    category: "toys"
-  },
-  {
-    id: 5,
-    name: "Professional Tennis Racket",
-    price: 199.99,
-    image: "/placeholder.svg",
-    rating: 4.8,
-    reviews: 78,
-    category: "sports"
-  }
-];
+import { getProductsByCategory, getAllCategories } from "@/data/products";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const CategoryPage = () => {
   const { category } = useParams<{ category: string }>();
   
-  const categoryProducts = allProducts.filter(
-    product => product.category === category?.toLowerCase()
-  );
+  const allCategories = getAllCategories();
+  const categoryData = allCategories.find(cat => cat.slug === category?.toLowerCase());
+  const categoryProducts = categoryData ? getProductsByCategory(categoryData.id) : [];
 
-  const categoryTitles: { [key: string]: string } = {
-    stationery: "Stationery",
-    gifts: "Gifts",
-    toys: "Toys", 
-    sports: "Sports"
-  };
-
-  const categoryTitle = category ? categoryTitles[category.toLowerCase()] || category : "Category";
+  const categoryTitle = categoryData?.name || category || "Category";
 
   return (
     <div className="min-h-screen bg-background">
@@ -97,6 +43,7 @@ const CategoryPage = () => {
         )}
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };

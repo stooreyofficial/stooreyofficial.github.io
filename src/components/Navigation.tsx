@@ -1,4 +1,4 @@
-import { ShoppingCart, Search, Menu, X } from "lucide-react";
+import { ShoppingCart, Search, Menu, X, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -33,12 +33,24 @@ const Navigation = () => {
             <Link to="/about" className="text-foreground hover:text-primary transition-colors">
               About
             </Link>
+            <Link to="/contact" className="text-foreground hover:text-primary transition-colors">
+              Contact
+            </Link>
           </div>
 
           {/* Actions */}
           <div className="flex items-center space-x-4">
             <Button variant="ghost" size="icon" className="hidden md:flex">
               <Search className="h-5 w-5" />
+            </Button>
+
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="hidden md:flex"
+              onClick={() => window.open('https://wa.me/919214745754?text=Hi! I\'d like to know more about your products.', '_blank')}
+            >
+              <MessageCircle className="h-5 w-5" />
             </Button>
             
             <Link to="/cart">
@@ -95,6 +107,13 @@ const Navigation = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 About
+              </Link>
+              <Link 
+                to="/contact" 
+                className="text-foreground hover:text-primary transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Contact
               </Link>
             </div>
           </div>

@@ -2,6 +2,7 @@ import React from "react";
 import Navigation from "@/components/Navigation";
 import CategoryGrid from "@/components/CategoryGrid";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Categories = () => {
   return (
@@ -19,6 +20,7 @@ const Categories = () => {
         <CategoryGrid />
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };

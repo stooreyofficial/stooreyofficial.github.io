@@ -1,6 +1,7 @@
 import React from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const About = () => {
   return (
@@ -27,20 +28,28 @@ const About = () => {
             <h2 className="text-2xl font-semibold text-foreground mt-12 mb-6">What We Offer</h2>
             <div className="grid md:grid-cols-2 gap-8 mt-8">
               <div>
+                <h3 className="text-xl font-semibold text-foreground mb-3">Electronics</h3>
+                <p>Latest gadgets, smartphones, laptops, and accessories for your digital lifestyle.</p>
+              </div>
+              <div>
                 <h3 className="text-xl font-semibold text-foreground mb-3">Stationery</h3>
                 <p>High-quality writing instruments, notebooks, and office supplies for students and professionals.</p>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">Gifts</h3>
-                <p>Thoughtfully selected gifts for every occasion and recipient, from birthdays to holidays.</p>
+                <h3 className="text-xl font-semibold text-foreground mb-3">Fashion</h3>
+                <p>Trendy accessories and fashion items to complete your look.</p>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-foreground mb-3">Toys</h3>
-                <p>Educational and entertaining toys that inspire creativity and learning in children of all ages.</p>
+                <h3 className="text-xl font-semibold text-foreground mb-3">Home & Living</h3>
+                <p>Comfortable and stylish items to make your house feel like home.</p>
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-foreground mb-3">Sports</h3>
                 <p>Sports equipment and accessories to help you stay active and pursue your athletic goals.</p>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-foreground mb-3">Books</h3>
+                <p>A curated collection of books for learning, inspiration, and entertainment.</p>
               </div>
             </div>
             
@@ -53,6 +62,7 @@ const About = () => {
         </div>
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };
