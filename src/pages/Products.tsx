@@ -5,92 +5,18 @@ import ProductCard from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Filter, Grid, List } from "lucide-react";
-import productHeadphones from "@/assets/product-headphones.jpg";
-import productPhone from "@/assets/product-phone.jpg";
-import productWatch from "@/assets/product-watch.jpg";
-import productLaptop from "@/assets/product-laptop.jpg";
-
-const allProducts = [
-  {
-    id: 1,
-    name: "Premium Wireless Headphones",
-    price: 199,
-    originalPrice: 249,
-    image: productHeadphones,
-    rating: 4.8,
-    reviews: 124,
-    category: "Audio",
-    isNew: false,
-    isOnSale: true,
-  },
-  {
-    id: 2,
-    name: "Next-Gen Smartphone",
-    price: 899,
-    image: productPhone,
-    rating: 4.9,
-    reviews: 89,
-    category: "Mobile",
-    isNew: true,
-    isOnSale: false,
-  },
-  {
-    id: 3,
-    name: "Smart Fitness Watch",
-    price: 349,
-    originalPrice: 399,
-    image: productWatch,
-    rating: 4.7,
-    reviews: 156,
-    category: "Wearables",
-    isNew: false,
-    isOnSale: true,
-  },
-  {
-    id: 4,
-    name: "Ultra-Slim Laptop",
-    price: 1299,
-    image: productLaptop,
-    rating: 4.8,
-    reviews: 67,
-    category: "Computing",
-    isNew: true,
-    isOnSale: false,
-  },
-  // Add more products to demonstrate pagination
-  {
-    id: 5,
-    name: "Professional Camera",
-    price: 1599,
-    image: productLaptop, // Using laptop image as placeholder
-    rating: 4.9,
-    reviews: 45,
-    category: "Photography",
-    isNew: true,
-    isOnSale: false,
-  },
-  {
-    id: 6,
-    name: "Gaming Console",
-    price: 499,
-    originalPrice: 549,
-    image: productHeadphones, // Using headphones image as placeholder
-    rating: 4.7,
-    reviews: 234,
-    category: "Gaming",
-    isNew: false,
-    isOnSale: true,
-  },
-];
+import { products, getAllCategories } from "@/data/products";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Products = () => {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [sortBy, setSortBy] = useState("featured");
   const [selectedCategory, setSelectedCategory] = useState("all");
 
-  const categories = ["all", "Audio", "Mobile", "Wearables", "Computing", "Photography", "Gaming"];
+  const allCategories = getAllCategories();
+  const categoryOptions = ["all", ...allCategories.map(cat => cat.id)];
 
-  const filteredProducts = allProducts.filter(product => 
+  const filteredProducts = products.filter(product => 
     selectedCategory === "all" || product.category === selectedCategory
   );
 
@@ -128,9 +54,9 @@ const Products = () => {
                   <SelectValue placeholder="Select category" />
                 </SelectTrigger>
                 <SelectContent>
-                  {categories.map(category => (
+                  {categoryOptions.map(category => (
                     <SelectItem key={category} value={category}>
-                      {category === "all" ? "All Categories" : category}
+                      {category === "all" ? "All Categories" : allCategories.find(c => c.id === category)?.name || category}
                     </SelectItem>
                   ))}
                 </SelectContent>
@@ -228,6 +154,7 @@ const Products = () => {
       </section>
 
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };

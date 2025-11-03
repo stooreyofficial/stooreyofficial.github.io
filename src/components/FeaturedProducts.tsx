@@ -2,61 +2,11 @@ import ProductCard from "./ProductCard";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import productHeadphones from "@/assets/product-headphones.jpg";
-import productPhone from "@/assets/product-phone.jpg";
-import productWatch from "@/assets/product-watch.jpg";
-import productLaptop from "@/assets/product-laptop.jpg";
-
-const featuredProducts = [
-  {
-    id: 1,
-    name: "Premium Art Supplies Set",
-    price: 89,
-    originalPrice: 119,
-    image: productHeadphones,
-    rating: 4.8,
-    reviews: 124,
-    category: "Stationery",
-    isNew: false,
-    isOnSale: true,
-  },
-  {
-    id: 2,
-    name: "Luxury Gift Box Collection",
-    price: 149,
-    image: productPhone,
-    rating: 4.9,
-    reviews: 89,
-    category: "Gifts",
-    isNew: true,
-    isOnSale: false,
-  },
-  {
-    id: 3,
-    name: "Educational Building Blocks",
-    price: 79,
-    originalPrice: 99,
-    image: productWatch,
-    rating: 4.7,
-    reviews: 156,
-    category: "Toys",
-    isNew: false,
-    isOnSale: true,
-  },
-  {
-    id: 4,
-    name: "Professional Tennis Racket",
-    price: 299,
-    image: productLaptop,
-    rating: 4.8,
-    reviews: 67,
-    category: "Sports",
-    isNew: true,
-    isOnSale: false,
-  },
-];
+import { getFeaturedProducts } from "@/data/products";
 
 const FeaturedProducts = () => {
+  const featuredProducts = getFeaturedProducts();
+  
   return (
     <section className="py-20 bg-gradient-subtle">
       <div className="container mx-auto px-4">

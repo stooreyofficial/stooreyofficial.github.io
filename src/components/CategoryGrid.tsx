@@ -6,41 +6,33 @@ import {
   Trophy, 
   Scissors, 
   Heart,
-  ArrowRight 
+  ArrowRight,
+  Home,
+  BookOpen
 } from "lucide-react";
+import { getAllCategories } from "@/data/products";
 
-const categories = [
-  {
-    id: 1,
-    name: "Stationery",
-    icon: PenTool,
-    productCount: 145,
-    color: "bg-blue-500",
-  },
-  {
-    id: 2,
-    name: "Gifts",
-    icon: Gift,
-    productCount: 89,
-    color: "bg-pink-500",
-  },
-  {
-    id: 3,
-    name: "Toys",
-    icon: Heart,
-    productCount: 76,
-    color: "bg-purple-500",
-  },
-  {
-    id: 4,
-    name: "Sports",
-    icon: Trophy,
-    productCount: 102,
-    color: "bg-green-500",
-  },
-];
+const categoryIcons: { [key: string]: any } = {
+  electronics: Trophy,
+  stationery: PenTool,
+  fashion: Heart,
+  home: Home,
+  sports: Trophy,
+  books: BookOpen
+};
+
+const categoryColors: { [key: string]: string } = {
+  electronics: "bg-blue-500",
+  stationery: "bg-purple-500",
+  fashion: "bg-pink-500",
+  home: "bg-green-500",
+  sports: "bg-orange-500",
+  books: "bg-indigo-500"
+};
 
 const CategoryGrid = () => {
+  const categories = getAllCategories();
+  
   return (
     <section className="py-20">
       <div className="container mx-auto px-4">
@@ -57,16 +49,17 @@ const CategoryGrid = () => {
         {/* Categories Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {categories.map((category) => {
-            const Icon = category.icon;
+            const Icon = categoryIcons[category.id] || PenTool;
+            const color = categoryColors[category.id] || "bg-blue-500";
             return (
               <Link 
                 key={category.id}
-                to={`/category/${category.name.toLowerCase()}`}
+                to={`/category/${category.slug}`}
                 className="group"
               >
                 <div className="bg-card border border-card-border rounded-2xl p-6 text-center transition-all duration-300 hover:shadow-elegant hover:-translate-y-2 group">
                   {/* Icon */}
-                  <div className={`${category.color} w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-110`}>
+                  <div className={`${color} w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4 transition-transform duration-300 group-hover:scale-110`}>
                     <Icon className="h-8 w-8 text-white" />
                   </div>
 
@@ -75,9 +68,9 @@ const CategoryGrid = () => {
                     {category.name}
                   </h3>
 
-                  {/* Product Count */}
+                  {/* Product Count - You can update this with actual counts */}
                   <p className="text-sm text-muted-foreground mb-3">
-                    {category.productCount} products
+                    View products
                   </p>
 
                   {/* Arrow Icon */}
